@@ -1,0 +1,59 @@
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: blue;
+}
+
+#brand-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#brand-items {
+  display: flex;
+  gap: 10px;
+}
+
+.brand-item {
+  color: #f1f1f1;
+  
+}
+
+#logo-container {
+  display: flex;
+  color: #f1f1f1;
+  font-size: 1rem;
+  border: solid;
+  padding: 10px;
+}
+.brand-items {
+  display: flex;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  a {
+    color: #f1f1f1;
+    background-color: red;
+    padding: 10px;
+  }
+}
+.account-options {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+#login-button {
+  background-color: green;
+  color: #f1f1f1;
+  padding: 10px;
+}
+#sign-up-button {
+  background-color: green;
+  color: #f1f1f1;
+  padding: 10px;
+}
