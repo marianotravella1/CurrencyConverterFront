@@ -8,6 +8,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './favorite-coins.component.html',
   styleUrl: './favorite-coins.component.scss'
 })
-export class FavoriteCoins {
+export class FavoriteCoinsComponent {
 
 }
