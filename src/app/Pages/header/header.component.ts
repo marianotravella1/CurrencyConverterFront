@@ -4,29 +4,26 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, RouterOutlet],
+  imports: [RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  toggleNav() {
-    const toggleButton = document.getElementById('nav-toggle');
-    const menu = document.getElementById('menu');
+  private isMenuOpen: boolean = false;
 
-    if (toggleButton && menu) {
-      menu.style.left = '100%'; 
+  toggleMenu(): void {
+    const navMenu = document.getElementById('nav-menu');
+    if (navMenu) {
+      this.isMenuOpen = !this.isMenuOpen;
+      navMenu.style.left = this.isMenuOpen ? '0' : '100%';
+    }
+  }
 
-      const toggleMenu = (): void => {
-        if (menu.style.left === '0px') {
-          menu.style.left = '100%'; 
-        } else {
-          menu.style.left = '0'; 
-        }
-      };
-
-      toggleButton.addEventListener('click', toggleMenu);
-
-     
+  closeMenu(): void {
+    const navMenu = document.getElementById('nav-menu');
+    if (navMenu) {
+      this.isMenuOpen = false;
+      navMenu.style.left = '100%';
     }
   }
 }

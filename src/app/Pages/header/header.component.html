@@ -7,16 +7,16 @@
       <div class="brand-item">Mariano’s Converter</div>
     </div>
   </div>
-  <nav id="menu">
-    <a (click)="toggleNav()" routerLink="/converter" class="nav-item" draggable="false">Converter</a>
-    <a (click)="toggleNav()" routerLink="/favorite-coins" class="nav-item" draggable="false">Favorite Coins</a>
-    <a (click)="toggleNav()" routerLink="/conversion-history" class="nav-item" draggable="false">Conversion History</a>
+  <nav id="nav-menu">
+    <a (click)="toggleMenu()" routerLink="/converter" class="nav-item" draggable="false">Converter</a>
+    <a (click)="toggleMenu()" routerLink="/favorite-coins" class="nav-item" draggable="false">Favorite Coins</a>
+    <a (click)="toggleMenu()" routerLink="/conversion-history" class="nav-item" draggable="false">Conversion History</a>
   </nav>
   <div class="account-options">
     <a routerLink="/login" id="login-button" draggable="false">Login</a>
     <a routerLink="/sign-up" id="sign-up-button" draggable="false">Sign Up</a>
   </div>
-  <button id="nav-toggle" (click)="toggleNav()">
+  <button id="nav-toggle" (click)="toggleMenu()">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-list" viewBox="0 0 16 16">
       <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
     </svg>
