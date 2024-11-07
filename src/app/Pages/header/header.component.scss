@@ -11,24 +11,55 @@ header {
     text-decoration: none;
   }
 }
+#brand-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 25px;
+}
 
+#brand-items {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  &>:last-child {
+    color: darken($color: colors.$font-on-dark, $amount: 30%);
+  }
+}
+
+#vertical-line {
+  border-right: solid 2px darken($color: colors.$font-on-dark, $amount: 30%);
+  height: 20px;
+}
 nav {
   display: flex;
   justify-content: space-around;
 }
 
 a {
+  padding: 15px;
 
   transition: 0.125s;
   &:hover {
-    color: darken($color: colors.$font-on-dark, $amount: 40%);
+    opacity: 0.7;
   }
+}
+.account-options {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+#login-button {
+  padding: 10px;
+}
+#sign-up-button {
+  padding: 10px;
 }
 
 @media (max-width: 767px) {
   header {
     height: 60px;
-    background-color: rgb(13, 0, 255);
   }
   #brand-items {
     display: none;
@@ -46,81 +77,46 @@ a {
     a {
       font-size: 1.3rem;
       //border: solid colors.$font-on-dark;
-      padding: 20px;
       flex: 1;
       text-align: center;
     }
   }
-  .account-options {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-  }
-  #login-button {
-    background-color: green;
-    padding: 10px;
-  }
-  #sign-up-button {
-    background-color: green;
-    padding: 10px;
-  }
-
+  
+  
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   #brand-items {
     display: none;
   }
+
+  nav {
+    gap: 10px;
+
+    a {
+      padding: 10px;
+      border: solid 2px colors.$font-on-dark;
+      border-radius: 5px;
+    }
+  }
+  .toggle {
+    display: none;
+  }
+  
+}
+
+@media (min-width: 1024px) {
+
+  nav {
+    gap: 10px;
+
+    a {
+      padding: 10px;
+      border: solid 2px colors.$font-on-dark;
+      border-radius: 5px;
+    }
+  }
   .toggle {
     display: none;
   }
 }
-
-@media (min-width: 1024px) {
-  #brand-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  #brand-items {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .brand-item {
-  
-  }
-  
-  #logo-container {
-    display: flex;
-    font-size: 1rem;
-    border: solid;
-    padding: 10px;
-  }
- 
-  nav {
-    gap: 10px;
-    a {
-      background-color: red;
-      padding: 10px;
-      width: max-content;
-    }
-  }
-  .account-options {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-  }
-  #login-button {
-    background-color: green;
-    padding: 10px;
-  }
-  #sign-up-button {
-    background-color: green;
-    padding: 10px;
-  }
-  
-}
-
-
