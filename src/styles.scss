@@ -47,6 +47,25 @@ table {
 	border-spacing: 0;
 }
 
+button {
+	border: none;
+	border-radius: 7px;
+	
+}
+
+.important-button {
+	padding: 10px;
+  background-color: colors.$button;
+	color: colors.$font-on-dark;
+	&:hover {
+		background-color: lighten($color: colors.$button, $amount: 10%);
+	}
+	&:active {
+		background-color: darken($color: colors.$button, $amount: 10%);
+	}
+
+}
+
 * {
 	font-family: "Poppins", serif;
 	font-size: 1rem;
