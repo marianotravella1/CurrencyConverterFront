@@ -52,18 +52,20 @@ a {
   gap: 10px;
 }
 
-button {
-  
-}
+
 
 #login-button {
   padding: 10px;
+  background: none;
+  border: none;
+  &:hover {
+    background-color: lighten($color: colors.$primary, $amount: 10%);
+  }
+  &:active {
+    background-color: darken($color: colors.$primary, $amount: 5%);
+  }
 }
-#sign-up-button {
-  padding: 10px;
-  background-color: colors.$button;
-  border-radius: 7px;
-}
+
 
 #nav-toggle {
   display: none;
