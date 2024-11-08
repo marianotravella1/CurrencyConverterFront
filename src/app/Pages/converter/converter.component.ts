@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-converter',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, FormsModule],
   templateUrl: './converter.component.html',
   styleUrl: './converter.component.scss'
 })
@@ -23,5 +24,15 @@ export class ConverterComponent {
   
     // Asigna el valor validado al input
     input.value = value;
+  }
+
+  
+  errorLogin = false;
+
+  async Result(converterForm: NgForm) {
+    const {amount, from, to} = converterForm.value;
+    const converterData = {amount, from, to};
+    
+    console.log(converterData);
   }
 }

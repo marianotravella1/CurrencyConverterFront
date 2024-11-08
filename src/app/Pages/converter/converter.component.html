@@ -1,15 +1,15 @@
 <h1 id="title">Converter</h1>
-<div id="converter-container">
+<form #ConverterForm="ngForm" (ngSubmit)="Result(ConverterForm)" id="converter-container">
   <div id="amount-container">
     <div class="text-field">
       <label for="amount">Amount</label>
-      <input type="text" (input)="validateInput($event)" placeholder="500">
+      <input type="text" (input)="validateInput($event)" placeholder="500" name="amount" required ngModel>
     </div>
   </div>
   <div id="from-container">
     <div class="text-field">
       <label for="from">From</label>
-      <select>
+      <select name="from" required ngModel>
         <option value="USD">USD - US Dollar</option>
         <option value="ARS">ARS - Argentine Peso</option>
         <option value="EUR">EUR - Euro</option>
@@ -21,7 +21,7 @@
   <div id="to-container">
     <div class="text-field">
       <label for="to">To</label>
-      <select>
+      <select name="to" required ngModel>
         <option value="USD">USD - US Dollar</option>
         <option value="ARS">ARS - Argentine Peso</option>
         <option value="EUR">EUR - Euro</option>
@@ -30,5 +30,5 @@
       </select>
     </div>
   </div>
-  <button class="important-button">Convert</button>
-</div>
+  <button [disabled]="ConverterForm.invalid" type="submit" class="important-button">Convert</button>
+</form>
