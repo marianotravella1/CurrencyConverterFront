@@ -1,1 +1,74 @@
-<p>sign-up works!</p>
+<div class="title">
+    <h1>Sign Up</h1>
+</div>
+<form #registerForm="ngForm" (ngSubmit)="signUp(registerForm)" class="form-box">
+  <div class="form-fields">
+    <div class="column">
+      <div class="text-field">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your Name"
+          ngModel
+          required
+        />
+      </div>
+      <div class="text-field">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="your_username"
+          ngModel
+          required
+        />
+      </div>
+      <div class="text-field">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Password"
+          ngModel
+          required
+        />
+      </div>
+    </div>
+    <div class="column">
+      <div class="text-field">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Your Email"
+          ngModel
+          required
+        />
+      </div>
+      <div class="text-field">
+        <label for="subscription">Select subscription</label>
+        <select id="subscription" name="subscription" ngModel required>
+          <option value="Free">Free</option>
+          <option value="Trial">Trial</option>
+          <option value="Pro">Pro</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <button
+    [disabled]="registerForm.invalid"
+    type="submit"
+    class="important-button"
+  >
+    <a>Create Account</a>
+  </button>
+</form>
+<div>
+  <span>Already have an account?</span>
+  <a [routerLink]="['/login']" title="Create Account"> Log in </a>
+</div>
