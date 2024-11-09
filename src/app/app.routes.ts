@@ -5,6 +5,7 @@ import { SignUpComponent } from './Pages/sign-up/sign-up.component';
 import { ConverterComponent } from './Pages/converter/converter.component';
 import { ConversionHistoryComponent } from './Pages/conversion-history/conversion-history.component';
 import { FavoriteCoinsComponent } from './Pages/favorite-coins/favorite-coins.component';
+import { NotFoundComponent } from './Pages/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,15 @@ export const routes: Routes = [
     path: "favorite-coins",
     component: FavoriteCoinsComponent
   },
+  {
+    path: "not-found",
+    component: NotFoundComponent
+  },
+  {
+    path: "*",
+    redirectTo: "not-found",
+    pathMatch: "full"
+  }
 
 ];
 
