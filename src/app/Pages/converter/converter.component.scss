@@ -15,6 +15,11 @@ h1 {
   background-color: beige;
 }
 
+#input-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .text-field {
   padding: 20px;
   display: flex;
@@ -22,16 +27,17 @@ h1 {
 }
 
 input {
+  display: flex;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  #converter-container {
+  #input-container {
     flex-direction: row;
   }
 }
 
 @media (min-width: 1024px) {
-  #converter-container {
+  #input-container {
     flex-direction: row;
   }
 }
