@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CurrencyService } from '../../Services/currency.service';
 
 @Component({
   selector: 'app-favorite-coins',
@@ -9,5 +10,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './favorite-coins.component.scss'
 })
 export class FavoriteCoinsComponent {
+  currencyService = inject(CurrencyService);
 
 }
