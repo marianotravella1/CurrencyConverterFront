@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CurrencyService } from '../../Services/currency.service';
+import { Currency } from '../../Interfaces/currency';
 
 @Component({
   selector: 'app-converter',
@@ -10,6 +12,14 @@ import { RouterModule } from '@angular/router';
   styleUrl: './converter.component.scss'
 })
 export class ConverterComponent {
+  currencyService = inject(CurrencyService);
+
+  CurrencyName(currency: Currency)
+  {
+    return currency.code + ' - ' + currency.legend; 
+  }
+
+
   validateInput(event: Event): void {
     const input = event.target as HTMLInputElement;
     let value = input.value;
