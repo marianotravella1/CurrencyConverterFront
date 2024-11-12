@@ -1,24 +1,36 @@
-<form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="form-box">
-  <div class="title-row">
-    <div class="welcome-message">
-      <h1>Welcome!</h1>
-    </div>
+<div class="title-row">
+  <div class="welcome-message">
+    <h1>Welcome!</h1>
   </div>
+</div>
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="form-box">
   <div class="text-field">
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" placeholder="Username" ngModel required/>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Username"
+      ngModel
+      required
+    />
   </div>
   <div class="text-field">
     <label for="password">Password</label>
-    <input id="password" type="password" name="password" placeholder="Password" ngModel required/>
+    <input
+      id="password"
+      type="password"
+      name="password"
+      placeholder="Password"
+      ngModel
+      required
+    />
   </div>
   <button [disabled]="loginForm.invalid" type="submit" class="important-button">
     <a>Log in</a>
   </button>
-  <div class="form-actions">
-      <span>Don't have an account?</span>
-      <a [routerLink]="['/sign-up']" title="Create Account">
-        Sign Up
-      </a>
-  </div>
 </form>
+  <div class="form-actions">
+    <span>Don't have an account?</span>
+    <a [routerLink]="['/sign-up']" title="Create Account"> Sign Up </a>
+  </div>
