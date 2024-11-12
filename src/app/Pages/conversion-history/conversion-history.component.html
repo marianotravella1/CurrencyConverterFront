@@ -1,1 +1,25 @@
-<p>conversion-history works!</p>
+
+<h2>Conversion History</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Source</th>
+      <th>Target</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (conversion of conversionService.conversions; track $index) {
+    <tr>
+      <td>{{conversion.conversionDate.toLocaleDateString('es-AR')}}</td>
+      <td>{{formatTime(conversion.conversionDate)}}</td>
+      <td>{{conversion.sourceCurrency}}</td>
+      <td>{{conversion.targetCurrency}}</td>
+      <td>{{conversion.convertedAmount}}</td>
+    </tr>
+  }
+  </tbody>
+</table>
