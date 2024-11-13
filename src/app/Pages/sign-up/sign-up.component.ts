@@ -15,17 +15,5 @@ export class SignUpComponent {
   authService = inject(AuthenticationService)
   router = inject(Router)
 
-  async signUp(registerForm: NgForm){
-    const {username, name, email, password, subscription} = registerForm.value;
-    const registerData = {username, name, email, password, subscription};
-    
-    const res = await this.authService.signUp(registerData)
-
-    if(res?.statusText === "Created") {
-      this.router.navigate(['/login']).then(() => {
-        //Swal.fire("Registro exitoso", "", "success");
-        console.log("Registro exitoso");
-      })
-    } else this.errorRegister = true;
-  }
+ 
 }
