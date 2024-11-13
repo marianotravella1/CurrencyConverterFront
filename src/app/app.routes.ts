@@ -4,7 +4,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { SignUpComponent } from './Pages/sign-up/sign-up.component';
 import { ConverterComponent } from './Pages/converter/converter.component';
 import { ConversionHistoryComponent } from './Pages/conversion-history/conversion-history.component';
-import { FavoriteCoinsComponent } from './Pages/favorite-coins/favorite-coins.component';
+import { CurrenciesComponent } from './Pages/currencies/currencies.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
 
 export const routes: Routes = [
@@ -29,8 +29,8 @@ export const routes: Routes = [
     component: ConversionHistoryComponent
   },
   {
-    path: "favorite-coins",
-    component: FavoriteCoinsComponent
+    path: "currencies",
+    component: CurrenciesComponent
   },
   {
     path: "not-found",
