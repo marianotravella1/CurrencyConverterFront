@@ -1,85 +1,61 @@
 import { Injectable } from '@angular/core';
-import { Login, ResLogin } from '../Interfaces/login';
-import { User } from '../Interfaces/user';
-import { environment } from '../Environments/environment';
-import { SignUp } from '../Interfaces/sign-up';
+import { environment } from '../Environments/environment.development';
+import { Login } from '../Interfaces/login';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
+  usuario: any = null; // Aquí se almacenará la información del usuario autenticado
 
-  constructor() { 
-    const token = this.getToken();
-    if(token){
-      if(!this.user) this.user = {
-        username: '',
-        token: token,
-        isAdmin: false
+  constructor() {}
+
+  // Método para iniciar sesión
+  async login(loginData: Login): Promise<boolean> {
+    try {
+      // Realizar solicitud al backend
+      const response = await fetch(`${environment.API_URL}Authenticate/Authenticate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( loginData ) // Enviar credenciales en el cuerpo de la solicitud
+      });
+
+      // Verificar si la autenticación fue exitosa
+      if (response.status === 200) {
+        const resJson = await response.json();
+        console.log("ResJson: ", resJson);
+        const token = resJson.token; // Suponiendo que el token está en `resJson.token`
+        console.log("token: ", token);
+
+        // Guardar el token en localStorage para persistencia
+        localStorage.setItem('authToken', token);
+
+        // Decodificar y almacenar la información del usuario
+        this.usuario = this.parseJwt(token);
+
+        return true;
+      } else {
+        console.error('Autenticación fallida');
+        return false;
       }
-      else this.user!.token = token;
+    } catch (error) {
+      console.error('Error en el proceso de autenticación:', error);
+      return false;
     }
   }
-user: User | undefined;
 
-  async login(loginData: Login) {
-    const res = await fetch(environment.API_URL+'login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
-    });
-
-    if (res.status !== 200) return;
-
-    const resJson: ResLogin = await res.json();
-
-    if (!resJson.token) return;
-
-    this.user = {
-        username: loginData.username,
-        token: resJson.token,
-        isAdmin: false
-    };
-
-    localStorage.setItem("authToken", resJson.token);
-
-    const userDetailsRes = await fetch(environment.API_URL+`usuarios/${encodeURIComponent(loginData.username)}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${resJson.token}`,
-            'Content-Type': 'application/json'
-        }
-    });
-
-    if (userDetailsRes.status !== 200) return;
-
-    const userDetailsResJson = await userDetailsRes.json();
-
-    this.user.isAdmin = userDetailsResJson.isAdmin;
-
-    return userDetailsRes;
+  // Método para decodificar el JWT y obtener los datos del usuario
+  private parseJwt(token: string): any {
+    const payloadBase64 = token.split('.')[1];
+    const payloadJson = atob(payloadBase64);
+    return JSON.parse(payloadJson);
   }
 
-  async signUp(registerData: SignUp) {
-    const res = await fetch(environment.API_URL+'sign-up', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(registerData)
-    });
-
-    if (res.status !== 201) return;
-    return res;
-  }
-
-  getToken() {
-    return localStorage.getItem("authToken");
-  }
-
-  clearToken() {
-    localStorage.removeItem("authToken")
+  // Método para cerrar sesión
+  logout(): void {
+    localStorage.removeItem('authToken'); // Eliminar el token de almacenamiento
+    this.usuario = null; // Borrar datos del usuario en memoria
   }
 }

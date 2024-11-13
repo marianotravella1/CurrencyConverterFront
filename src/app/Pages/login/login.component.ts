@@ -15,15 +15,17 @@ export class LoginComponent {
   router = inject(Router);
 
   errorLogin = false;
-
   async login(loginForm: NgForm){
     const {username, password} = loginForm.value;
     const loginData = {username, password};
-    
+
     const res = await this.authService.login(loginData)
 
-    if(res?.statusText === "OK") this.router.navigate(['/converter']);
-    
+    if (res)
+    {
+      this.router.navigate(['/converter']);
+    }
     else this.errorLogin = true;
   }
+  
 }
