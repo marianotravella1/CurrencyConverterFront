@@ -3,5 +3,5 @@ export interface Currency {
   code: string,
   symbol: string,
   convertibilityIndex: string,
-  isFavorite: boolean
+  isFavorite: number
 }
