@@ -27,6 +27,10 @@ export const routes: Routes = [
     component: ConverterComponent,
   },
   {
+    path: "conversion-history",
+    component: ConversionHistoryComponent
+  },
+  {
     path: "currencies",
     component: CurrenciesComponent
   },
