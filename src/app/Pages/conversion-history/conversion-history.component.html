@@ -14,10 +14,10 @@
   <tbody>
     @for (conversion of conversionService.conversions; track $index) {
     <tr>
-      <td>{{conversion.conversionDate.toLocaleDateString('es-AR')}}</td>
-      <td>{{formatTime(conversion.conversionDate)}}</td>
-      <td>{{conversion.sourceCurrency}}</td>
-      <td>{{conversion.targetCurrency}}</td>
+      <td>{{formatDate(conversion.conversionDate)}}</td>
+      <td>{{formatHour(conversion.conversionDate)}}</td>
+      <td>{{conversion.sourceCurrency.legend}}</td>
+      <td>{{conversion.targetCurrency.legend}}</td>
       <td>{{conversion.convertedAmount}}</td>
     </tr>
   }
