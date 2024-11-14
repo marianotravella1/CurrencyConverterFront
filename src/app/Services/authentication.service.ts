@@ -34,6 +34,7 @@ export class AuthenticationService {
 
         // Decodificar y almacenar la información del usuario
         this.usuario = this.parseJwt(token);
+        console.log(this.usuario);
 
         return true;
       } else {
