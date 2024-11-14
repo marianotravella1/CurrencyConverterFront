@@ -25,16 +25,13 @@ export class AuthenticationService {
       // Verificar si la autenticación fue exitosa
       if (response.status === 200) {
         const resJson = await response.json();
-        console.log("ResJson: ", resJson);
         const token = resJson.token; // Suponiendo que el token está en `resJson.token`
-        console.log("token: ", token);
 
         // Guardar el token en localStorage para persistencia
         localStorage.setItem('authToken', token);
 
         // Decodificar y almacenar la información del usuario
         this.usuario = this.parseJwt(token);
-        console.log(this.usuario);
 
         return true;
       } else {
