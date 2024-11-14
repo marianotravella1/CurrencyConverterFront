@@ -1,36 +1,63 @@
-import { Injectable } from '@angular/core';
-import { Conversions } from '../Interfaces/conversions';
+import { inject, Injectable } from '@angular/core';
+import { environment } from '../Environments/environment.development';
+import { CurrencyService } from './currency.service';
+import { CalcConversion, Conversion } from '../Interfaces/conversions';
+import { from } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConversionService {
+  currencyService = inject(CurrencyService);
+  conversions: Conversion[] = [];
 
-  conversions: Conversions[] = [
-    {
-      conversionDate: new Date("2024-11-08T10:33:46.873Z"),
-      sourceCurrency: 'ARS',
-      targetCurrency: 'USD',
-      convertedAmount: '500'
-    },{
-      conversionDate: new Date("2024-11-08T16:33:46.873Z"),
-      sourceCurrency: 'ARS',
-      targetCurrency: 'USD',
-      convertedAmount: '500'
-    },
-    {
-      conversionDate: new Date("2024-11-08T08:33:46.873Z"),
-      sourceCurrency: 'ARS',
-      targetCurrency: 'USD',
-      convertedAmount: '500'
-    },
-    {
-      conversionDate: new Date("2024-11-08T00:00:46.873Z"),
-      sourceCurrency: 'ARS',
-      targetCurrency: 'USD',
-      convertedAmount: '500'
-    },
-  ]
+  constructor() {
+    this.loadData();
+  }
 
-  constructor() { }
+  async loadData() {
+    await this.getConversions();
+  }
+
+  async getConversions() {
+    const res = await fetch(environment.API_URL + 'Conversion', {
+      headers: {
+        authorization: 'Bearer ' + localStorage.getItem('authToken'),
+      },
+    });
+    if (res.status !== 200) return;
+    const resJson = await res.json();
+
+    console.log(resJson);
+    this.conversions = resJson;
+  }
+
+  async convertCurrency(formData: CalcConversion) {
+    try {
+      const response = await fetch(
+        `${environment.API_URL}Conversion/CalculateConversion`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            authorization: 'Bearer ' + localStorage.getItem('authToken'),
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.status === 200) {
+        const resJson = await response.json();
+        console.log(resJson);
+
+        return resJson;
+      } else {
+        console.error('Conversion fallida');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error en el proceso de conversión:', error);
+      return false;
+    }
+  }
 }
