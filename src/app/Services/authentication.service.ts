@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../Environments/environment.development';
 import { Login } from '../Interfaces/login';
+import { SignUp } from '../Interfaces/sign-up';
 
 @Injectable({
   providedIn: 'root',
@@ -55,5 +56,28 @@ export class AuthenticationService {
   logout(): void {
     localStorage.removeItem('authToken'); // Eliminar el token de almacenamiento
     this.usuario = null; // Borrar datos del usuario en memoria
+  }
+
+  async SignUp(signUpData: SignUp): Promise<boolean> {
+    try {
+      const response = await fetch(`${environment.API_URL}User/SignUp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( signUpData )
+      });
+      console.log(response);
+
+      if (response.status === 204) {
+        return true;
+      } else {
+        console.error('Error al crear un user');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error en el proceso de creación de usuario:', error);
+      return false;
+    }
   }
 }
