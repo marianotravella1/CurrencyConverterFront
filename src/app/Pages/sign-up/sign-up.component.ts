@@ -3,6 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../Services/authentication.service';
 import { SignUp } from '../../Interfaces/sign-up';
+import { SubscriptionService } from '../../Services/subscription.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,6 +16,7 @@ export class SignUpComponent {
   errorRegister = false;
   authService = inject(AuthenticationService);
   router = inject(Router);
+  subscriptionService = inject(SubscriptionService);
 
   errorSignUp = false;
   async signUp(registerForm: NgForm) {

@@ -53,9 +53,10 @@
       <div class="text-field">
         <label for="subscriptionName">Select subscription</label>
         <select id="subscriptionName" name="subscriptionName" ngModel required>
-          <option value="FREE">Free</option>
-          <option value="TRIAL">Trial</option>
-          <option value="PRO">Pro</option>
+          @for (sub of subscriptionService.subscriptions; track $index) 
+          {
+            <option value="{{sub.name}}">{{sub.name}}</option>
+          }
         </select>
       </div>
     </div>
