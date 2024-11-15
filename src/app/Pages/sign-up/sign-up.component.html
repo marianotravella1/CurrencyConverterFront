@@ -1,7 +1,7 @@
 <div class="title">
     <h1>Sign Up</h1>
 </div>
-<form #registerForm="ngForm"  class="form-box">
+<form #registerForm="ngForm" (submit)="signUp(registerForm)" class="form-box">
   <div class="form-fields">
     <div class="column">
       <div class="text-field">
@@ -51,11 +51,11 @@
         />
       </div>
       <div class="text-field">
-        <label for="subscription">Select subscription</label>
-        <select id="subscription" name="subscription" ngModel required>
-          <option value="Free">Free</option>
-          <option value="Trial">Trial</option>
-          <option value="Pro">Pro</option>
+        <label for="subscriptionName">Select subscription</label>
+        <select id="subscriptionName" name="subscriptionName" ngModel required>
+          <option value="FREE">Free</option>
+          <option value="TRIAL">Trial</option>
+          <option value="PRO">Pro</option>
         </select>
       </div>
     </div>

@@ -3,7 +3,7 @@ export interface SignUp{
   name: string
   email: string
   password:string
-  subscription: number
+  subscriptionName: string
 }
 
 export interface ResSignUp {
