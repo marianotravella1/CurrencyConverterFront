@@ -48,7 +48,6 @@ export class ConversionService {
 
       if (response.status === 200) {
         const resJson = await response.json();
-        console.log(resJson);
 
         return resJson;
       } else {

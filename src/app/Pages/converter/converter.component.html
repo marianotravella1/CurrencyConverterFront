@@ -29,7 +29,7 @@
           ngModel
         >
           @for (currency of currencyService.currencies; track $index) {
-          <option>{{ currency.code }}</option>
+          <option value="{{currency.code}}">{{ CurrencyName(currency) }}</option>
           }
         </select>
       </div>
@@ -44,7 +44,7 @@
           ngModel
         >
           @for (currency of currencyService.currencies; track $index) {
-          <option>{{ currency.code }}</option>
+          <option value="{{currency.code}}">{{ CurrencyName(currency) }}</option>
           }
         </select>
       </div>

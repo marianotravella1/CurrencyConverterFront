@@ -24,16 +24,10 @@ export class ConverterComponent {
   validateInput(event: Event): void {
     const input = event.target as HTMLInputElement;
     let value = input.value;
-
-    // Reemplazar comas por puntos (si se prefiere solo un separador decimal)
     value = value.replace(',', '.');
-
-    // Permitir solo números y un solo punto decimal
     if (!/^\d*\.?\d*$/.test(value)) {
-      value = value.slice(0, -1); // Elimina el último caracter si no es válido
+      value = value.slice(0, -1); 
     }
-
-    // Asigna el valor validado al input
     input.value = value;
   }
 
@@ -51,5 +45,6 @@ export class ConverterComponent {
 
     const res = await this.conversionService.convertCurrency(converterData);
     this.resultConversion = res;
+    this.conversionService.loadData();
   }
 }
