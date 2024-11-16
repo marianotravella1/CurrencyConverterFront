@@ -29,7 +29,9 @@
           ngModel
         >
           @for (currency of currencyService.currencies; track $index) {
-          <option value="{{currency.code}}">{{ CurrencyName(currency) }}</option>
+          <option value="{{ currency.code }}">
+            {{ CurrencyName(currency) }}
+          </option>
           }
         </select>
       </div>
@@ -44,7 +46,9 @@
           ngModel
         >
           @for (currency of currencyService.currencies; track $index) {
-          <option value="{{currency.code}}">{{ CurrencyName(currency) }}</option>
+          <option value="{{ currency.code }}">
+            {{ CurrencyName(currency) }}
+          </option>
           }
         </select>
       </div>
@@ -57,8 +61,10 @@
   >
     Convert
   </button>
-
-  <div id="output-container">
-    <h3>Result: {{resultConversion}}</h3>
-  </div>
 </form>
+@if (resultConversion !== null) {
+<div id="output-container">
+  <p>Result: </p>
+  <span> {{ resultConversion.toFixed(2) }}</span>
+</div>
+}
