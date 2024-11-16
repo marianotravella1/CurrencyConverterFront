@@ -3,6 +3,7 @@ import { environment } from '../Environments/environment.development';
 import { CurrencyService } from './currency.service';
 import { CalcConversion, Conversion } from '../Interfaces/conversions';
 import { from } from 'rxjs';
+import { SubscriptionService } from './subscription.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,6 @@ export class ConversionService {
     if (res.status !== 200) return;
     const resJson = await res.json();
 
-    console.log(resJson);
     this.conversions = resJson;
   }
 
@@ -50,6 +50,8 @@ export class ConversionService {
         const resJson = await response.json();
 
         return resJson;
+      } else if (response.status === 204) {
+        return null;
       } else {
         console.error('Conversion fallida');
         return false;
