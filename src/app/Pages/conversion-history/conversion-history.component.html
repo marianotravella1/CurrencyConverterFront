@@ -9,6 +9,7 @@
       <th>Source</th>
       <th>Target</th>
       <th>Amount</th>
+      <th>Output</th>
     </tr>
   </thead>
   <tbody>
@@ -16,9 +17,10 @@
     <tr>
       <td>{{formatDate(conversion.conversionDate)}}</td>
       <td>{{formatHour(conversion.conversionDate)}}</td>
-      <td>{{conversion.sourceCurrency.legend}}</td>
-      <td>{{conversion.targetCurrency.legend}}</td>
-      <td>{{conversion.convertedAmount}}</td>
+      <td>{{conversion.sourceCurrency.code}}</td>
+      <td>{{conversion.targetCurrency.code}}</td>
+      <td>{{conversion.convertedAmount.toFixed(2)}}</td>
+      <td>{{conversion.targetCurrency.symbol + conversion.convertedOutput.toFixed(2)}}</td>
     </tr>
   }
   </tbody>

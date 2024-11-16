@@ -8,5 +8,6 @@ export interface Conversion {
   conversionDate: any,
   sourceCurrency: any,
   targetCurrency: any,
-  convertedAmount: number
+  convertedAmount: number,
+  convertedOutput: number,
 }
