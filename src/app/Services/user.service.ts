@@ -7,6 +7,7 @@ import { environment } from '../Environments/environment.development';
 })
 export class UserService {
   users: User[] = [];
+  userDetails: User | undefined;
 
   constructor() {}
 
@@ -22,6 +23,26 @@ export class UserService {
     } catch (error) {
       console.error('Error fetching users:', error);
       throw error;
+    }
+  }
+
+  async getUserDetails()
+  {
+    try {
+      const response = await fetch(`${environment.API_URL}User/UserDetails`, {
+        headers: {
+          authorization: 'Bearer ' + localStorage.getItem('authToken'),
+        },
+      });
+      const userDetails = response.json();
+      
+      console.log(userDetails);
+      return userDetails;
+    }
+    catch
+    {
+      console.error('Error fetching userDetails:');
+      return false;
     }
   }
 }
