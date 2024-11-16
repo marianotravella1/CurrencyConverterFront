@@ -5,6 +5,8 @@ import { CurrencyService } from '../../Services/currency.service';
 import { Currency } from '../../Interfaces/currency';
 import { ConversionService } from '../../Services/conversion.service';
 import { CalcConversion } from '../../Interfaces/conversions';
+import { SubscriptionService } from '../../Services/subscription.service';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-converter',
@@ -15,7 +17,9 @@ import { CalcConversion } from '../../Interfaces/conversions';
 })
 export class ConverterComponent {
   currencyService = inject(CurrencyService);
+  subscriptionService = inject(SubscriptionService);
   conversionService = inject(ConversionService);
+  userService = inject(UserService);
 
   CurrencyName(currency: Currency) {
     return currency.code + ' - ' + currency.legend;
@@ -26,13 +30,13 @@ export class ConverterComponent {
     let value = input.value;
     value = value.replace(',', '.');
     if (!/^\d*\.?\d*$/.test(value)) {
-      value = value.slice(0, -1); 
+      value = value.slice(0, -1);
     }
     input.value = value;
   }
 
   errorConversion = false;
-  resultConversion: number | string = "";
+  resultConversion: number | null = null;
 
   async ConverterFormData(converterForm: NgForm) {
     const { convertedAmount, sourceCurrencyCode, targetCurrencyCode } =
@@ -44,7 +48,13 @@ export class ConverterComponent {
     };
 
     const res = await this.conversionService.convertCurrency(converterData);
-    this.resultConversion = res;
-    this.conversionService.loadData();
+
+    if (res) {
+      this.resultConversion = res;
+      this.conversionService.loadData();
+    } else {
+      console.log('Alcanzaste el límite de conversiones');
+    }
   }
 }
+  
