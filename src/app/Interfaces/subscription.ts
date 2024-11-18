@@ -1,5 +1,6 @@
 export interface Subscription {
+  subscriptionId: number,
   name: string,
-  conversionLimit: number | undefined,
+  conversionLimit: number | null,
   price: number
 }

@@ -3,9 +3,6 @@ export interface SignUp{
   name: string
   email: string
   password:string
-  subscriptionName: string
+  subscriptionId: number
 }
 
-export interface ResSignUp {
-  message: string
-}

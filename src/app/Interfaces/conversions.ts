@@ -1,6 +1,6 @@
 export interface CalcConversion {
-  sourceCurrencyCode: string,
-  targetCurrencyCode: string,
+  sourceCurrencyId: number,
+  targetCurrencyId: number,
   convertedAmount: string
 }
 
