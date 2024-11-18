@@ -51,11 +51,11 @@
         />
       </div>
       <div class="text-field">
-        <label for="subscriptionName">Select subscription</label>
-        <select id="subscriptionName" name="subscriptionName" ngModel required>
+        <label for="subscriptionId">Select subscription</label>
+        <select id="subscriptionId" name="subscriptionId" ngModel required>
           @for (sub of subscriptionService.subscriptions; track $index) 
           {
-            <option value="{{sub.name}}">{{sub.name}}</option>
+            <option value="{{sub.subscriptionId}}">{{sub.name}}</option>
           }
         </select>
       </div>

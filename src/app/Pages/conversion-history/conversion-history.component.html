@@ -1,6 +1,3 @@
-
-<h2>Conversion History</h2>
-
 <table>
   <thead>
     <tr>
@@ -15,12 +12,14 @@
   <tbody>
     @for (conversion of conversionService.conversions; track $index) {
     <tr>
-      <td>{{formatDate(conversion.conversionDate)}}</td>
-      <td>{{formatHour(conversion.conversionDate)}}</td>
-      <td>{{conversion.sourceCurrency.code}}</td>
-      <td>{{conversion.targetCurrency.code}}</td>
-      <td>{{conversion.convertedAmount.toFixed(2)}}</td>
-      <td>{{conversion.targetCurrency.symbol + conversion.convertedOutput.toFixed(2)}}</td>
+      <td data-label="Date">{{formatDate(conversion.conversionDate)}}</td>
+      <td data-label="Time">{{formatHour(conversion.conversionDate)}}</td>
+      <td data-label="Source">{{conversion.sourceCurrency.code}}</td>
+      <td data-label="Target">{{conversion.targetCurrency.code}}</td>
+      <td data-label="Amount">{{conversion.convertedAmount.toLocaleString('es-Ar')}}</td>
+      <td data-label="Output">
+        {{conversion.targetCurrency.symbol + conversion.convertedOutput.toLocaleString('es-Ar')}}
+      </td>
     </tr>
   }
   </tbody>

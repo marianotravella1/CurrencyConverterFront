@@ -1,70 +1,73 @@
-<h1 id="title">Converter</h1>
-<form
-  #ConverterForm="ngForm"
-  (ngSubmit)="ConverterFormData(ConverterForm)"
-  id="converter-container"
->
-  <div id="input-container">
-    <div id="amount-container">
-      <div class="text-field">
-        <label for="convertedAmount">Amount</label>
-        <input
-          type="text"
-          (input)="validateInput($event)"
-          placeholder="500"
-          name="convertedAmount"
-          id="convertedAmount"
-          required
-          ngModel
-        />
-      </div>
-    </div>
-    <div id="from-container">
-      <div class="text-field">
-        <label for="sourceCurrencyCode">From</label>
-        <select
-          name="sourceCurrencyCode"
-          id="sourceCurrencyCode"
-          required
-          ngModel
-        >
-          @for (currency of currencyService.currencies; track $index) {
-          <option value="{{ currency.code }}">
-            {{ CurrencyName(currency) }}
-          </option>
-          }
-        </select>
-      </div>
-    </div>
-    <div id="to-container">
-      <div class="text-field">
-        <label for="targetCurrencyCode">To</label>
-        <select
-          name="targetCurrencyCode"
-          id="targetCurrencyCode"
-          required
-          ngModel
-        >
-          @for (currency of currencyService.currencies; track $index) {
-          <option value="{{ currency.code }}">
-            {{ CurrencyName(currency) }}
-          </option>
-          }
-        </select>
-      </div>
-    </div>
-  </div>
-  <button
-    [disabled]="ConverterForm.invalid"
-    type="submit"
-    class="important-button"
+<div id="converter-container">
+  <h1 id="title">Converter</h1>
+  <form
+    #ConverterForm="ngForm"
+    (ngSubmit)="ConverterFormData(ConverterForm)"
+    id="form-container"
   >
-    Convert
-  </button>
-</form>
-@if (resultConversion !== null) {
-<div id="output-container">
-  <p>Result: </p>
-  <span> {{ resultConversion.toFixed(2) }}</span>
+    <div id="input-container">
+      <div id="amount-container">
+        <div class="text-field">
+          <label for="convertedAmount">Amount</label>
+          <input
+            type="text"
+            maxlength="20"
+            (input)="validateInput($event)"
+            placeholder="500"
+            name="convertedAmount"
+            id="convertedAmount"
+            required
+            ngModel
+          />
+        </div>
+      </div>
+      <div id="from-container">
+        <div class="text-field">
+          <label for="sourceCurrencyId">From</label>
+          <select
+            name="sourceCurrencyId"
+            id="sourceCurrencyId"
+            required
+            ngModel
+          >
+            @for (currency of currencyService.currencies; track $index) {
+            <option value="{{ currency.currencyId }}">
+              {{ CurrencyName(currency) }}
+            </option>
+            }
+          </select>
+        </div>
+      </div>
+      <div id="to-container">
+        <div class="text-field">
+          <label for="targetCurrencyId">To</label>
+          <select
+            name="targetCurrencyId"
+            id="targetCurrencyId"
+            required
+            ngModel
+          >
+            @for (currency of currencyService.currencies; track $index) {
+            <option value="{{ currency.currencyId }}">
+              {{ CurrencyName(currency) }}
+            </option>
+            }
+          </select>
+        </div>
+      </div>
+    </div>
+    <button
+      [disabled]="ConverterForm.invalid"
+      type="submit"
+      class="important-button"
+    >
+      Convert
+    </button>
+  </form>
+  @if (resultConversion !== null) {
+  <div id="output-container">
+    <p>Result:</p>
+    <span> {{ resultConversion.toFixed(2) }}</span>
+  </div>
+  }
 </div>
-}
