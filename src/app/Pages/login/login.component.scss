@@ -1,0 +1,176 @@
+// Variables globales
+$primary-color: #4caf50;
+$secondary-color: #f1f1f1;
+$text-color: #333;
+$background-color: #ffffff;
+
+$dark-primary-color: #81c784;
+$dark-secondary-color: #121212;
+$dark-text-color: #e0e0e0;
+$dark-background-color: #1e1e1e;
+
+$font-family: 'Roboto', sans-serif;
+$border-radius: 10px;
+$box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+$box-shadow-dark: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+// Estilo principal del login
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: $font-family;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  .dark-mode & {
+    background-color: $dark-background-color;
+    color: $dark-text-color;
+  }
+}
+
+form {
+  background-color: $secondary-color;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-light;
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .dark-mode & {
+    background-color: $dark-secondary-color;
+    box-shadow: $box-shadow-dark;
+  }
+
+  // Bienvenida
+  .title-row {
+    text-align: center;
+    .welcome-message {
+      h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 0;
+        color: $primary-color;
+
+        .dark-mode & {
+          color: $dark-primary-color;
+        }
+      }
+    }
+  }
+
+  // Campos de texto
+  .text-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    label {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: $border-radius;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 5px $primary-color;
+      }
+
+      .dark-mode & {
+        background-color: $dark-secondary-color;
+        border-color: $dark-text-color;
+        color: $dark-text-color;
+
+        &:focus {
+          border-color: $dark-primary-color;
+          box-shadow: 0 0 5px $dark-primary-color;
+        }
+      }
+    }
+  }
+
+  // Botón de login
+  .important-button {
+    background-color: $primary-color;
+    color: $background-color;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: lighten($primary-color, 10%);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .dark-mode & {
+      background-color: $dark-primary-color;
+      color: $dark-background-color;
+
+      &:hover {
+        background-color: lighten($dark-primary-color, 10%);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+// Acciones del formulario (registro)
+.form-actions {
+  text-align: center;
+  margin-top: 10px;
+
+  span {
+    font-size: 0.9rem;
+    color: $text-color;
+
+    .dark-mode & {
+      color: $dark-text-color;
+    }
+  }
+
+  a {
+    color: $primary-color;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .dark-mode & {
+      color: $dark-primary-color;
+    }
+  }
+}
+
+// Responsivo
+@media (min-width: 768px) {
+  form {
+    padding: 30px;
+  }
+}

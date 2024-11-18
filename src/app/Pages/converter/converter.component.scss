@@ -1,43 +1,195 @@
 @use "./../../../../public/colors.scss";
 
-h1 {
-  text-align: center;
-  font-size: 3rem;
-  font-weight: bold;
-}
-
 #converter-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: solid 2px;
-  overflow: hidden;
-  background-color: beige;
+  width: 100%;
+  background-color: aqua;
 }
+// Título
+#title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: colors.$primary-color;
 
-#input-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.text-field {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  display: flex;
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  #input-container {
-    flex-direction: row;
+  .dark-mode & {
+    color: colors.$dark-primary-color;
   }
 }
 
-@media (min-width: 1024px) {
-  #input-container {
-    flex-direction: row;
+// Contenedor principal del formulario
+#form-container {
+  background-color: colors.$background-color;
+  padding: 20px;
+  border-radius: colors.$border-radius;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+  gap: 20px;
+
+  .dark-mode & {
+    background-color: colors.$dark-background-color;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  }
+}
+
+// Contenedor de entradas
+#input-container {
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+}
+
+// Campo de texto y selects
+.text-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: colors.$text-color;
+
+    .dark-mode & {
+      color: colors.$dark-text-color;
+    }
+  }
+
+  input,
+  select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: colors.$border-radius;
+    font-size: 1rem;
+    color: colors.$text-color;
+    background-color: colors.$secondary-color;
+    outline: none;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: colors.$primary-color;
+    }
+
+    .dark-mode & {
+      background-color: colors.$dark-secondary-color;
+      color: colors.$dark-text-color;
+      border-color: colors.$dark-primary-color;
+
+      &:focus {
+        border-color: colors.$dark-primary-color;
+      }
+    }
+  }
+}
+
+// Botón principal
+.important-button {
+  background-color: colors.$primary-color;
+  color: colors.$background-color;
+  border: none;
+  padding: 10px 15px;
+  border-radius: colors.$border-radius;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+
+  &:disabled {
+    background-color: darken(colors.$primary-color, 20%);
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: lighten(colors.$primary-color, 10%);
+  }
+
+  .dark-mode & {
+    background-color: colors.$dark-primary-color;
+    color: colors.$dark-background-color;
+
+    &:hover:not(:disabled) {
+      background-color: lighten(colors.$dark-primary-color, 10%);
+    }
+
+    &:disabled {
+      background-color: darken(colors.$dark-primary-color, 20%);
+    }
+  }
+}
+
+// Contenedor del resultado
+#output-container {
+  background-color: colors.$background-color;
+  padding: 15px;
+  border-radius: colors.$border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  text-align: center;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+
+  p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: colors.$text-color;
+
+    .dark-mode & {
+      color: colors.$dark-text-color;
+    }
+  }
+
+  span {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: colors.$primary-color;
+    margin-top: 10px;
+
+    .dark-mode & {
+      color: colors.$dark-primary-color;
+    }
+  }
+
+  .dark-mode & {
+    background-color: colors.$dark-background-color;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+// Responsivo para pantallas más grandes
+@media (min-width: 768px) {
+  #title {
+    font-size: 2rem;
+  }
+
+  #form-container {
+    gap: 25px;
+  }
+
+  #input_container {
+    flex-direction: column;
+  }
+
+  .text-field input,
+  .text-field select {
+    font-size: 1.1rem;
+  }
+
+  .important-button {
+    font-size: 1.1rem;
+  }
+
+  #output-container span {
+    font-size: 2rem;
   }
 }
