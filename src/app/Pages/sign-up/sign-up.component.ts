@@ -20,14 +20,14 @@ export class SignUpComponent {
 
   errorSignUp = false;
   async signUp(registerForm: NgForm) {
-    const { name, username, password, email, subscriptionName } =
+    const { name, username, password, email, subscriptionId } =
       registerForm.value;
     const signUpData: SignUp = {
       name,
       username,
       password,
       email,
-      subscriptionName,
+      subscriptionId,
     };
     const res = await this.authService.SignUp(signUpData);
 
