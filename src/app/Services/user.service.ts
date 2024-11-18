@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
-import { User } from '../Interfaces/user';
+import { UserDetails } from '../Interfaces/user';
 import { environment } from '../Environments/environment.development';
+import { Subscription } from '../Interfaces/subscription';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  users: User[] = [];
-  userDetails: User | undefined;
+  users: UserDetails[] = [];
+  userDetails: UserDetails | undefined;
 
-  constructor() {}
+  constructor() {
+    this.laodData();
+  }
+
+  async laodData() {
+    this.getUserDetails();
+  }
 
   async getUsers() {
     try {
@@ -26,8 +33,7 @@ export class UserService {
     }
   }
 
-  async getUserDetails()
-  {
+  async getUserDetails() {
     try {
       const response = await fetch(`${environment.API_URL}User/UserDetails`, {
         headers: {
@@ -35,14 +41,27 @@ export class UserService {
         },
       });
       const userDetails = response.json();
-      
+
       console.log(userDetails);
       return userDetails;
-    }
-    catch
-    {
+    } catch {
       console.error('Error fetching userDetails:');
       return false;
+    }
+  }
+
+  async UpgradeSubscriptionById(subscriptionId: number) {
+    const res = await fetch(
+      environment.API_URL + 'Subscription/' + subscriptionId,
+      {
+        headers: {
+          authorization: 'Bearer ' + localStorage.getItem('authToken'),
+        },
+      }
+    );
+    if (res.status !== 200) return;
+    else {
+      console.log('Subscription Upgraded');
     }
   }
 }
