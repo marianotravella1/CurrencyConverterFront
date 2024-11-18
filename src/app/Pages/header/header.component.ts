@@ -11,19 +11,9 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 export class HeaderComponent {
   private isMenuOpen: boolean = false;
 
-  toggleMenu(): void {
-    const navMenu = document.getElementById('nav-menu');
-    if (navMenu) {
-      this.isMenuOpen = !this.isMenuOpen;
-      navMenu.style.left = this.isMenuOpen ? '0' : '100%';
-    }
-  }
+  menuOpen = false;
 
-  closeMenu(): void {
-    const navMenu = document.getElementById('nav-menu');
-    if (navMenu) {
-      this.isMenuOpen = false;
-      navMenu.style.left = '100%';
-    }
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 }
