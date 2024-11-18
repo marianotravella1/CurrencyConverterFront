@@ -11,38 +11,40 @@ import { soloLoggedGuard } from './Guards/solo-logged.guard';
 
 export const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: HomeComponent,
   },
   {
-    path: "login",
-    component: LoginComponent
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path: "sign-up",
-    component: SignUpComponent
+    path: 'sign-up',
+    component: SignUpComponent,
   },
   {
-    path: "converter",
+    path: 'converter',
     component: ConverterComponent,
   },
   {
-    path: "conversion-history",
-    component: ConversionHistoryComponent
+    path: 'home',
+    component: HomeComponent,
   },
   {
-    path: "currencies",
-    component: CurrenciesComponent
+    path: 'conversion-history',
+    component: ConversionHistoryComponent,
   },
   {
-    path: "not-found",
-    component: NotFoundComponent
+    path: 'currencies',
+    component: CurrenciesComponent,
   },
   {
-    path: "*",
-    redirectTo: "not-found",
-    pathMatch: "full"
-  }
-
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
+    path: '*',
+    redirectTo: 'not-found',
+    pathMatch: 'full',
+  },
 ];
-
