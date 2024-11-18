@@ -1,6 +1,7 @@
 import { Subscription } from "./subscription"
 
-export interface User {
+export interface UserDetails {
+  userId: number
   username: string
   name: string
   email: string
