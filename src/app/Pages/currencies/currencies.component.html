@@ -1,24 +1,25 @@
-<h2>Currencies</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Legend</th>
-      <th>Code</th>
-      <th>Symbol</th>
-      <th>CI</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (currency of currencyService.currencies; track $index) {
-
-    <tr>
-      <td>{{ currency.legend }}</td>
-      <td>{{ currency.code }}</td>
-      <td>{{ currency.symbol }}</td>
-      <td>{{ currency.convertibilityIndex }}</td>
-    </tr>
-    }
-  </tbody>
-</table>
-
+<main>
+  <div id="table-container">
+    <h2>Currencies</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Legend</th>
+          <th>Code</th>
+          <th>Symbol</th>
+          <th>CI</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (currency of currencyService.currencies; track $index) {
+        <tr>
+          <td>{{ currency.legend }}</td>
+          <td>{{ currency.code }}</td>
+          <td>{{ currency.symbol }}</td>
+          <td>{{ currency.convertibilityIndex }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</main>

@@ -1,26 +1,36 @@
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Source</th>
-      <th>Target</th>
-      <th>Amount</th>
-      <th>Output</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (conversion of conversionService.conversions; track $index) {
-    <tr>
-      <td data-label="Date">{{formatDate(conversion.conversionDate)}}</td>
-      <td data-label="Time">{{formatHour(conversion.conversionDate)}}</td>
-      <td data-label="Source">{{conversion.sourceCurrency.code}}</td>
-      <td data-label="Target">{{conversion.targetCurrency.code}}</td>
-      <td data-label="Amount">{{conversion.convertedAmount.toLocaleString('es-Ar')}}</td>
-      <td data-label="Output">
-        {{conversion.targetCurrency.symbol + conversion.convertedOutput.toLocaleString('es-Ar')}}
-      </td>
-    </tr>
-  }
-  </tbody>
-</table>
+<main>
+  <div id="history-container">
+    <h2>Conversion History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Source</th>
+          <th>Target</th>
+          <th>Amount</th>
+          <th>Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (conversion of conversionService.conversions; track $index) {
+        <tr>
+          <td data-label="Date">{{ formatDate(conversion.conversionDate) }}</td>
+          <td data-label="Time">{{ formatHour(conversion.conversionDate) }}</td>
+          <td data-label="Source">{{ conversion.sourceCurrency.code }}</td>
+          <td data-label="Target">{{ conversion.targetCurrency.code }}</td>
+          <td data-label="Amount">
+            {{ conversion.convertedAmount.toLocaleString("es-Ar") }}
+          </td>
+          <td data-label="Output">
+            {{
+              conversion.targetCurrency.symbol +
+                conversion.convertedOutput.toLocaleString("es-Ar")
+            }}
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</main>
