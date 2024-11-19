@@ -11,4 +11,6 @@ import { HeaderComponent } from "./Pages/header/header.component";
 })
 export class AppComponent {
   title = 'CurrencyConverterFront';
+
+  
 }

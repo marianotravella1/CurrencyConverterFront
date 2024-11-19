@@ -35,7 +35,6 @@ export class ConverterComponent {
     }
     input.value = value;
   }
-  
 
   errorConversion = false;
   resultConversion: number | null = null;
@@ -57,56 +56,16 @@ export class ConverterComponent {
       this.conversionService.loadData();
     } else {
       this.showUpgradeMembershipAlert();
+      
     }
   }
 
   // Función para mostrar la alerta
   showUpgradeMembershipAlert() {
     Swal.fire({
-      title: 'You’ve reached your conversion limit!',
-      html: `
-      <p>Select a new membership to get more conversions:</p>
-      <div style="display: flex; justify-content: space-around; gap: 10px; margin-top: 20px;">
-        <!-- Card 1 -->
-        <div class="membership-card" style="text-align: center; padding: 10px; border: 1px solid #ccc; border-radius: 10px; width: 30%;">
-          <h3>Free</h3>
-          <p>10 conversions/month</p>
-          <button class="membership-btn" data-plan="Free" style="background: #ccc; padding: 5px 10px; border-radius: 5px; border: none;">Choose</button>
-        </div>
-        <!-- Card 2 -->
-        <div class="membership-card" style="text-align: center; padding: 10px; border: 1px solid #007bff; border-radius: 10px; width: 30%; background: #f0f8ff;">
-          <h3>Pro</h3>
-          <p>100 conversions/month</p>  
-          <button class="membership-btn" data-plan="Pro" style="background: #007bff; color: white; padding: 5px 10px; border-radius: 5px; border: none;">Choose</button>
-        </div>
-        <!-- Card 3 -->
-        <div class="membership-card" style="text-align: center; padding: 10px; border: 1px solid #28a745; border-radius: 10px; width: 30%; background: #e9f7ef;">
-          <h3>Premium</h3>
-          <p>Unlimited conversions</p>
-          <button class="membership-btn" data-plan="Premium" style="background: #28a745; color: white; padding: 5px 10px; border-radius: 5px; border: none;">Choose</button>
-        </div>
-      </div>
-    `,
-      showConfirmButton: false, // Ocultamos los botones predeterminados
-      showCloseButton: true, // Permite cerrar la alerta con un botón de cierre
-      didRender: () => {
-        // Agregar eventos a los botones dinámicamente
-        const buttons = document.querySelectorAll('.membership-btn');
-        buttons.forEach((button) => {
-          button.addEventListener('click', (e) => {
-            const target = e.target as HTMLButtonElement;
-            const plan = 'PRO';
-            Swal.fire({
-              title: `You selected the ${plan} plan!`,
-              icon: 'success',
-              confirmButtonText: 'Okay',
-            }).then(() => {
-              // Aquí puedes enviar la solicitud para cambiar de plan
-              console.log(`Changing to ${plan} plan...`);
-            });
-          });
-        });
-      },
+      icon: 'error',
+      title: 'Oops...',
+      text: 'You’ve reached your conversion limit!',
     });
   }
 }
