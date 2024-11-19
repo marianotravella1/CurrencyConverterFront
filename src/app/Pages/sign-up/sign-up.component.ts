@@ -33,7 +33,13 @@ export class SignUpComponent {
     const res = await this.authService.SignUp(signUpData);
 
     if (res) {
-      console.log('UserCreatedSuccessfuly');
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User created successfuly",
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.router.navigate(['/login']);
     } else {
       this.errorSignUp = true;
