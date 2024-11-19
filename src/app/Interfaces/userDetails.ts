@@ -1,6 +1,10 @@
 import { Subscription } from "./subscription"
 
 export interface UserDetails {
-  sub: number
-  given_name: string
+  userId: number
+  username: string
+  name: string
+  email: string
+  password:string
+  subscription: Subscription
 }

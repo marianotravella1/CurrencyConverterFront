@@ -1,0 +1,21 @@
+<!-- <main>
+  <div id="upgrade-container">
+    <h2>Upgrade Your Subscription</h2>
+    <div class="subscription-cards">
+      @for (sub of subService.subscriptions; track $index) {
+      <div class="subscription-card">
+        <h3>{{ sub.name }}</h3>
+        <p class="conversions">Max Conversions:</p>
+        <span>
+          @if (sub.conversionLimit === null ) {
+          Unlimitted } @else {
+          {{ sub.conversionLimit }}
+          }
+        </span>
+        <p class="price">Price: ${{ sub.price }}</p>
+        <button (click)="upgradeSub(sub.subscriptionId)" class="upgrade-button">Upgrade</button>
+      </div>
+      }
+    </div>
+  </div>
+</main> -->
