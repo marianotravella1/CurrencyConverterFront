@@ -59,7 +59,7 @@ export const routes: Routes = [
     component: NotFoundComponent,
   },
   {
-    path: '*',
+    path: '**',
     redirectTo: 'not-found',
     pathMatch: 'full',
   },
