@@ -6,38 +6,47 @@ import { ConverterComponent } from './Pages/converter/converter.component';
 import { ConversionHistoryComponent } from './Pages/conversion-history/conversion-history.component';
 import { CurrenciesComponent } from './Pages/currencies/currencies.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
-import { soloAdminGuard } from './Guards/solo-admin.guard';
 import { soloLoggedGuard } from './Guards/solo-logged.guard';
+import { soloPublicoGuard } from './Guards/solo-publico.guard';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
+    path: 'converter',
+    component: ConverterComponent,
+    canActivate: [soloLoggedGuard],
+  },
+  {
+    path: 'conversion-history',
+    component: ConversionHistoryComponent,
+    canActivate: [soloLoggedGuard],
+
+  },
+  {
+    path: 'currencies',
+    component: CurrenciesComponent,
+    canActivate: [soloLoggedGuard],
+
   },
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [soloPublicoGuard],
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
+    canActivate: [soloPublicoGuard],
   },
   {
-    path: 'converter',
-    component: ConverterComponent,
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
     path: 'home',
     component: HomeComponent,
   },
-  {
-    path: 'conversion-history',
-    component: ConversionHistoryComponent,
-  },
-  {
-    path: 'currencies',
-    component: CurrenciesComponent,
-  },
+
   {
     path: 'not-found',
     component: NotFoundComponent,
