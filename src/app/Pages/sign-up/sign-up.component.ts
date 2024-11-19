@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../Services/authentication.service';
 import { SignUp } from '../../Interfaces/sign-up';
 import { SubscriptionService } from '../../Services/subscription.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -32,8 +33,16 @@ export class SignUpComponent {
     const res = await this.authService.SignUp(signUpData);
 
     if (res) {
-      console.log("UserCreatedSuccessfuly");
+      console.log('UserCreatedSuccessfuly');
       this.router.navigate(['/login']);
-    } else this.errorSignUp = true;
+    } else {
+      this.errorSignUp = true;
+      Swal.fire({
+        icon: 'error',
+        title: 'Sign Up Error',
+        text: '',
+        timer: 3000,
+      });
+    }
   }
 }
