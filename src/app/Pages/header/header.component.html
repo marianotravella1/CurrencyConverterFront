@@ -1,6 +1,6 @@
 <header>
   <div id="brand-container">
-    <div id="logo-container">ConverterAPP</div>
+    <a routerLink="/home" id="logo-container">ConverterAPP</a>
     <div class="account-options">
       @if (authService.logueado) {
         <button routerLink="/login" (click)="authService.logout()" class="important-button-empty">Log Out</button>
