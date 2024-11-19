@@ -4,9 +4,12 @@ import { AuthenticationService } from '../Services/authentication.service';
 
 export const soloLoggedGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthenticationService);
-  const router = inject(Router);
+  const router = inject(Router)
 
-  if (authService.usuario?.token) return true;
-  const url = router.parseUrl('/login');
+  if(authService.logueado)
+  {
+    return true
+  }
+  const url = router.parseUrl("/login");
   return new RedirectCommand(url);
 };
