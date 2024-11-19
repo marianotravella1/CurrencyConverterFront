@@ -1,8 +1,8 @@
-// Variables globales para colores claros
+// variables for light mode
 $primary-color: #4caf50;
 $secondary-color: #f1f1f1;
 $text-color: #333;
-$background-color: #ffffff;
+$background-color: rgb(197, 221, 161);
 $border-radius: 10px;
 $font-family: 'Roboto', sans-serif;
 $box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -10,11 +10,11 @@ $table-header-color: #ffffff;
 $table-row-hover-color: #e8f5e9;
 
 
-// Variables para modo oscuro
-$dark-primary-color: #81c784;
-$dark-secondary-color: #121212;
-$dark-text-color: #e0e0e0;
-$dark-background-color: #1e1e1e;
-$box-shadow-dark: 0 2px 5px rgba(0, 0, 0, 0.5);
-$table-header-dark-color: #1e1e1e;
-$table-row-hover-dark-color: #2e7d32;
+// // Variables for dark mode
+// $dark-primary-color: #81B64C;
+// $dark-secondary-color: #21201D;
+// $dark-text-color: #e0e0e0;
+// $dark-background-color: #302E2B;
+// $box-shadow-dark: 0 2px 5px rgba(0, 0, 0, 0.5);
+// $table-header-dark-color: #1e1e1e;
+// $table-row-hover-dark-color: #2e7d32;

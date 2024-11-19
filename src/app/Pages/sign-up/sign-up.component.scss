@@ -1,68 +1,40 @@
-// Variables globales
-$primary-color: #4caf50;
-$secondary-color: #f1f1f1;
-$text-color: #333;
-$background-color: #ffffff;
+@use "./../../../../public/colors.scss";
 
-$dark-primary-color: #81c784;
-$dark-secondary-color: #121212;
-$dark-text-color: #e0e0e0;
-$dark-background-color: #1e1e1e;
 
-$font-family: 'Roboto', sans-serif;
-$border-radius: 10px;
-$box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
-$box-shadow-dark: 0 2px 5px rgba(0, 0, 0, 0.5);
-
-// Contenedor principal
-body {
-  background-color: $background-color;
-  color: $text-color;
-  font-family: $font-family;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 20px;
-
-  .dark-mode & {
-    background-color: $dark-background-color;
-    color: $dark-text-color;
-  }
-}
 
 // Título
 .title {
   text-align: center;
-  margin-bottom: 20px;
 
   h1 {
     font-size: 2rem;
-    color: $primary-color;
+    font-weight: bold;
+    color: colors.$primary-color;
 
-    .dark-mode & {
-      color: $dark-primary-color;
-    }
+    // .dark-mode & {
+    //   color: colors.$dark-primary-color;
+    // }
   }
 }
 
 // Formulario
 form {
-  background-color: $secondary-color;
+  margin-top: 10px;
+  background-color: colors.$secondary-color;
   padding: 20px;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow-light;
-  max-width: 600px;
-  width: 100%;
+  border-radius: colors.$border-radius;
+  box-shadow: colors.$box-shadow-light;
+  width: 80%;
+  min-width: 250px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 
-  .dark-mode & {
-    background-color: $dark-secondary-color;
-    box-shadow: $box-shadow-dark;
-  }
+  // .dark-mode & {
+  //   background-color: colors.$dark-secondary-color;
+  //   box-shadow: colors.$box-shadow-dark;
+  // }
 
   // Campos del formulario
   .form-fields {
@@ -90,6 +62,7 @@ form {
       gap: 5px;
 
       label {
+        text-align: left;
         font-size: 1rem;
         font-weight: bold;
       }
@@ -98,44 +71,44 @@ form {
       select {
         padding: 10px;
         border: 1px solid #ddd;
-        border-radius: $border-radius;
+        border-radius: colors.$border-radius;
         font-size: 1rem;
 
         &:focus {
           outline: none;
-          border-color: $primary-color;
-          box-shadow: 0 0 5px $primary-color;
+          border-color: colors.$primary-color;
+          box-shadow: 0 0 5px colors.$primary-color;
         }
 
-        .dark-mode & {
-          background-color: $dark-secondary-color;
-          border-color: $dark-text-color;
-          color: $dark-text-color;
+        // .dark-mode & {
+        //   background-color: colors.$dark-secondary-color;
+        //   border-color: colors.$dark-text-color;
+        //   color: colors.$dark-text-color;
 
-          &:focus {
-            border-color: $dark-primary-color;
-            box-shadow: 0 0 5px $dark-primary-color;
-          }
-        }
+        //   &:focus {
+        //     border-color: colors.$dark-primary-color;
+        //     box-shadow: 0 0 5px colors.$dark-primary-color;
+        //   }
+        // }
       }
     }
   }
 
   // Botón principal
   .important-button {
-    background-color: $primary-color;
-    color: $background-color;
+    background-color: colors.$primary-color;
+    color: white;
     font-size: 1rem;
     font-weight: bold;
     padding: 10px;
     border: none;
-    border-radius: $border-radius;
+    border-radius: colors.$border-radius;
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: lighten($primary-color, 10%);
+      background-color: lighten(colors.$primary-color, 10%);
     }
 
     &:disabled {
@@ -143,14 +116,14 @@ form {
       cursor: not-allowed;
     }
 
-    .dark-mode & {
-      background-color: $dark-primary-color;
-      color: $dark-background-color;
+    // .dark-mode & {
+    //   background-color: colors.$dark-primary-color;
+    //   color: colors.$dark-background-color;
 
-      &:hover {
-        background-color: lighten($dark-primary-color, 10%);
-      }
-    }
+    //   &:hover {
+    //     background-color: lighten(colors.$dark-primary-color, 10%);
+    //   }
+    // }
 
     a {
       text-decoration: none;
@@ -165,15 +138,15 @@ div {
 
   span {
     font-size: 0.9rem;
-    color: $text-color;
+    color: colors.$text-color;
 
-    .dark-mode & {
-      color: $dark-text-color;
-    }
+    // .dark-mode & {
+    //   color: colors.$dark-text-color;
+    // }
   }
 
   a {
-    color: $primary-color;
+    color: colors.$primary-color;
     font-weight: bold;
     text-decoration: none;
 
@@ -181,15 +154,17 @@ div {
       text-decoration: underline;
     }
 
-    .dark-mode & {
-      color: $dark-primary-color;
-    }
+    // .dark-mode & {
+    //   color: colors.$dark-primary-color;
+    // }
   }
 }
 
 // Responsivo
 @media (min-width: 768px) {
   form {
+    max-width: 500px;
+
     padding: 30px;
   }
 }

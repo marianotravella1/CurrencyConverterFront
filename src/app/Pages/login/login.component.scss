@@ -9,44 +9,30 @@ $dark-secondary-color: #121212;
 $dark-text-color: #e0e0e0;
 $dark-background-color: #1e1e1e;
 
-$font-family: 'Roboto', sans-serif;
+$font-family: "Roboto", sans-serif;
 $border-radius: 10px;
 $box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
 $box-shadow-dark: 0 2px 5px rgba(0, 0, 0, 0.5);
 
 // Estilo principal del login
-body {
-  background-color: $background-color;
-  color: $text-color;
-  font-family: $font-family;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
 
-  .dark-mode & {
-    background-color: $dark-background-color;
-    color: $dark-text-color;
-  }
-}
 
 form {
-  background-color: $secondary-color;
-  padding: 20px;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow-light;
-  max-width: 400px;
-  width: 90%;
   display: flex;
   flex-direction: column;
+  background-color: $secondary-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-light;
+  max-width: 300px;
+  width: 70%;
+  margin-top: 20px;
+  padding: 20px;
   gap: 15px;
 
-  .dark-mode & {
-    background-color: $dark-secondary-color;
-    box-shadow: $box-shadow-dark;
-  }
+  // .dark-mode & {
+  //   background-color: $dark-secondary-color;
+  //   box-shadow: $box-shadow-dark;
+  // }
 
   // Bienvenida
   .title-row {
@@ -58,9 +44,9 @@ form {
         margin: 0;
         color: $primary-color;
 
-        .dark-mode & {
-          color: $dark-primary-color;
-        }
+        // .dark-mode & {
+        //   color: $dark-primary-color;
+        // }
       }
     }
   }
@@ -88,16 +74,16 @@ form {
         box-shadow: 0 0 5px $primary-color;
       }
 
-      .dark-mode & {
-        background-color: $dark-secondary-color;
-        border-color: $dark-text-color;
-        color: $dark-text-color;
+      // .dark-mode & {
+      //   background-color: $dark-secondary-color;
+      //   border-color: $dark-text-color;
+      //   color: $dark-text-color;
 
-        &:focus {
-          border-color: $dark-primary-color;
-          box-shadow: 0 0 5px $dark-primary-color;
-        }
-      }
+      //   &:focus {
+      //     border-color: $dark-primary-color;
+      //     box-shadow: 0 0 5px $dark-primary-color;
+      //   }
+      // }
     }
   }
 
@@ -123,20 +109,31 @@ form {
       cursor: not-allowed;
     }
 
-    .dark-mode & {
-      background-color: $dark-primary-color;
-      color: $dark-background-color;
+    // .dark-mode & {
+    //   background-color: $dark-primary-color;
+    //   color: $dark-background-color;
 
-      &:hover {
-        background-color: lighten($dark-primary-color, 10%);
-      }
-    }
+    //   &:hover {
+    //     background-color: lighten($dark-primary-color, 10%);
+    //   }
+    // }
 
     a {
       text-decoration: none;
       color: inherit;
     }
   }
+}
+
+h1 {
+  margin: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: $primary-color;
+
+  // .dark-mode & {
+  //   color: $dark-primary-color;
+  // }
 }
 
 // Acciones del formulario (registro)
@@ -148,9 +145,9 @@ form {
     font-size: 0.9rem;
     color: $text-color;
 
-    .dark-mode & {
-      color: $dark-text-color;
-    }
+    // .dark-mode & {
+    //   color: $dark-text-color;
+    // }
   }
 
   a {
@@ -162,9 +159,9 @@ form {
       text-decoration: underline;
     }
 
-    .dark-mode & {
-      color: $dark-primary-color;
-    }
+    // .dark-mode & {
+    //   color: $dark-primary-color;
+    // }
   }
 }
 

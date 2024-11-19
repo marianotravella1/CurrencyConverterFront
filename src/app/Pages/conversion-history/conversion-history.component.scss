@@ -1,70 +1,52 @@
 // @use "./../../../../public/tables.scss";
 @use "./../../../../public/colors.scss";
 
-// Variables globales
-$primary-color: #4caf50;
-$secondary-color: #f1f1f1;
-$text-color: #333;
-$table-header-color: #ffffff;
-$table-row-hover-color: #e8f5e9;
 
-$dark-primary-color: #81c784;
-$dark-secondary-color: #121212;
-$dark-text-color: #e0e0e0;
-$table-header-dark-color: #1e1e1e;
-$table-row-hover-dark-color: #2e7d32;
-
-$font-family: "Roboto", sans-serif;
-$border-radius: 10px;
-$box-shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
-$box-shadow-dark: 0 2px 5px rgba(0, 0, 0, 0.5);
-
-// Contenedor principal
-body {
+#history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: colors.$secondary-color;
-  color: colors.$text-color;
-  padding: 20px;
-
-  .dark-mode & {
-    background-color: colors.$dark-secondary-color;
-    color: colors.$dark-text-color;
-  }
+  width: 90%;
+  margin-top: 20px;
+  border-radius: 20px;
+  margin-bottom: 100px;
 }
 
-// Título
 h2 {
+  margin-top: 10px;
   text-align: center;
+  font-weight: bold;
   font-size: 2rem;
   color: colors.$primary-color;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 
-  .dark-mode & {
-    color: colors.$dark-primary-color;
-  }
+  // .dark-mode & {
+  //   color: colors.$dark-primary-color;
+  // }
 }
 
 // Tabla de historial
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  width: 90%;
   box-shadow: colors.$box-shadow-light;
   border-radius: colors.$border-radius;
-  overflow: hidden;
   background-color: colors.$table-header-color;
 
-  .dark-mode & {
-    background-color: colors.$table-header-dark-color;
-    box-shadow: colors.$box-shadow-dark;
-  }
+  // .dark-mode & {
+  //   background-color: colors.$table-header-dark-color;
+  //   box-shadow: colors.$box-shadow-dark;
+  // }
 
   thead {
     background-color: colors.$primary-color;
     color: colors.$table-header-color;
 
-    .dark-mode & {
-      background-color: colors.$dark-primary-color;
-    }
+    // .dark-mode & {
+    //   background-color: colors.$dark-primary-color;
+    // }
 
     th {
       padding: 15px;
@@ -73,9 +55,9 @@ table {
       font-size: 1rem;
       border-bottom: 2px solid colors.$secondary-color;
 
-      .dark-mode & {
-        border-bottom: 2px solid colors.$dark-secondary-color;
-      }
+      // .dark-mode & {
+      //   border-bottom: 2px solid colors.$dark-secondary-color;
+      // }
     }
   }
 
@@ -84,18 +66,18 @@ table {
       &:nth-child(even) {
         background-color: colors.$secondary-color;
 
-        .dark-mode & {
-          background-color: colors.$dark-secondary-color;
-        }
+        // .dark-mode & {
+        //   background-color: colors.$dark-secondary-color;
+        // }
       }
 
       &:hover {
         background-color: colors.$table-row-hover-color;
         cursor: pointer;
 
-        .dark-mode & {
-          background-color: colors.$table-row-hover-dark-color;
-        }
+        // .dark-mode & {
+        //   background-color: colors.$table-row-hover-dark-color;
+        // }
       }
 
       td {
@@ -103,9 +85,9 @@ table {
         border-bottom: 1px solid colors.$secondary-color;
         font-size: 0.9rem;
 
-        .dark-mode & {
-          border-bottom: 1px solid colors.$dark-secondary-color;
-        }
+        // .dark-mode & {
+        //   border-bottom: 1px solid colors.$dark-secondary-color;
+        // }
       }
     }
   }
@@ -114,38 +96,45 @@ table {
 // Responsivo
 @media (max-width: 768px) {
   table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-    width: 100%;
+    padding-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
     border: none;
+
+
 
     thead {
       display: none;
     }
 
     tbody {
+
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 5px;
 
       tr {
-        min-width: 250px;
+        margin: 10px;
+        min-width: 230px;
         display: flex;
         flex-direction: column;
         border-bottom: 2px solid colors.$secondary-color;
         padding: 10px;
         background-color: colors.$secondary-color;
 
-        .dark-mode & {
-          border-bottom: 2px solid colors.$dark-secondary-color;
-          background-color: colors.$dark-secondary-color;
-        }
+        // .dark-mode & {
+        //   border-bottom: 2px solid colors.$dark-secondary-color;
+        //   background-color: colors.$dark-secondary-color;
+        // }
 
         td {
           display: flex;
+
 
           justify-content: space-between;
           padding: 10px 5px;
