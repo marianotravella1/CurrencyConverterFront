@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UserDetails } from '../Interfaces/user';
 import { environment } from '../Environments/environment.development';
 import { Subscription } from '../Interfaces/subscription';
+import { UserDetails } from '../Interfaces/userDetails';
 
 @Injectable({
   providedIn: 'root',

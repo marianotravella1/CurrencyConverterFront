@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../Environments/environment.development';
-import { Login } from '../Interfaces/login';
+import { Login, ResLogin } from '../Interfaces/login';
 import { SignUp } from '../Interfaces/sign-up';
+import { UserDetails } from '../Interfaces/userDetails';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  usuario: any = null; // Aquí se almacenará la información del usuario autenticado
+  logueado?: ResLogin | null = null; 
 
   constructor() {}
 
@@ -23,16 +24,13 @@ export class AuthenticationService {
         body: JSON.stringify( loginData ) // Enviar credenciales en el cuerpo de la solicitud
       });
 
-      // Verificar si la autenticación fue exitosa
       if (response.status === 200) {
         const resJson = await response.json();
-        const token = resJson.token; // Suponiendo que el token está en `resJson.token`
-
-        // Guardar el token en localStorage para persistencia
+        const token = resJson.token; 
+        
         localStorage.setItem('authToken', token);
-
-        // Decodificar y almacenar la información del usuario
-        this.usuario = this.parseJwt(token);
+        
+        this.logueado = this.parseJwt(token);
 
         return true;
       } else {
@@ -54,8 +52,8 @@ export class AuthenticationService {
 
   // Método para cerrar sesión
   logout(): void {
-    localStorage.removeItem('authToken'); // Eliminar el token de almacenamiento
-    this.usuario = null; // Borrar datos del usuario en memoria
+    localStorage.removeItem('authToken'); 
+    this.logueado = null; 
   }
 
   async SignUp(signUpData: SignUp): Promise<boolean> {
