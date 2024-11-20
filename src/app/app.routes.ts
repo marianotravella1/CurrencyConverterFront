@@ -8,7 +8,7 @@ import { CurrenciesComponent } from './Pages/currencies/currencies.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { soloLoggedGuard } from './Guards/solo-logged.guard';
 import { soloPublicoGuard } from './Guards/solo-publico.guard';
-// import { UpgradeMembershipComponent } from './Pages/upgrade-membership/upgrade-membership.component';
+import { UpgradeSubscriptionComponent } from './Pages/upgrade-subscription/upgrade-subscription.component';
 
 export const routes: Routes = [
   {
@@ -22,12 +22,12 @@ export const routes: Routes = [
     canActivate: [soloLoggedGuard],
 
   },
-  // {
-  //   path: 'upgrade-membership',
-  //   component: UpgradeMembershipComponent,
-  //   // canActivate: [soloLoggedGuard],
+  {
+    path: 'upgrade-subscription',
+    component: UpgradeSubscriptionComponent,
+    canActivate: [soloLoggedGuard],
 
-  // },
+  },
   {
     path: 'currencies',
     component: CurrenciesComponent,

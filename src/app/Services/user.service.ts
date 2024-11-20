@@ -50,18 +50,20 @@ export class UserService {
     }
   }
 
-  // async UpgradeSubscriptionById(subscriptionId: number) {
-  //   const res = await fetch(
-  //     environment.API_URL + 'User/Upgrade/' + subscriptionId,
-  //     {
-  //       headers: {
-  //         authorization: 'Bearer ' + localStorage.getItem('authToken'),
-  //       },
-  //     }
-  //   );
-  //   if (res.status === 200) return true;
-  //   else {
-  //     return false
-  //   }
-  // }
+  async UpgradeSubscriptionById(subscriptionId: number) {
+    const res = await fetch(
+      environment.API_URL + 'User/Upgrade/' + subscriptionId,
+      {
+        method: 'PUT',
+        headers: {
+          authorization: 'Bearer ' + localStorage.getItem('authToken'),
+        },
+      }
+    );
+    console.log(res);
+    if (res.status === 200) return true;
+    else {
+      return false
+    }
+  }
 }

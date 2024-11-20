@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CurrencyService } from '../../Services/currency.service';
 import { Currency } from '../../Interfaces/currency';
 import { ConversionService } from '../../Services/conversion.service';
@@ -21,6 +21,7 @@ export class ConverterComponent {
   subscriptionService = inject(SubscriptionService);
   conversionService = inject(ConversionService);
   userService = inject(UserService);
+  router = inject(Router);
 
   CurrencyName(currency: Currency) {
     return currency.code + ' - ' + currency.legend;
@@ -55,6 +56,8 @@ export class ConverterComponent {
       this.resultConversion = res;
       this.conversionService.loadData();
     } else {
+      this.router.navigate(['/upgrade-subscription']);
+
       this.showUpgradeMembershipAlert();
       
     }
